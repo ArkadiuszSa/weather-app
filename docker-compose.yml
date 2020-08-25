@@ -1,0 +1,16 @@
+---
+version: "3.7"
+services:
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: dev.Dockerfile
+    env_file: ./deployment/.env
+    container_name: weather_app_frontend
+    command: yarn start
+    restart: unless-stopped
+    volumes:
+      - ./frontend:/code
+      - /code/node_modules
+    ports:
+      - 3000:3000
