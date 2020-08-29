@@ -4,6 +4,5 @@ export interface PlaceData {
 }
 
 export interface Place {
-    title: string;
     weatherId: number;
 }

@@ -27,18 +27,19 @@ export class WeatherService {
 
     private transformToWeather(weatherData: WeatherData): Weather {
         return {
+            applicableDate: new Date(weatherData.applicable_date),
             name: weatherData.weather_state_name,
             avgTemp: weatherData.the_temp,
             minTemp: weatherData.min_temp,
             maxTemp: weatherData.max_temp,
             windSpeed: weatherData.wind_speed,
             humidity: weatherData.humidity,
+            placeName: weatherData.title,
         };
     }
 
     private transformToPlace([placeData]: PlaceData[]): Place {
         return {
-            title: placeData.title,
             weatherId: placeData.woeid,
         };
     }
