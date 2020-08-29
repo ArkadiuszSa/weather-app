@@ -5,6 +5,7 @@
     "dependencies": {
         "@emotion/core": "^10.0.35",
         "@emotion/styled": "^10.0.27",
+        "@nivo/line": "^0.62.0",
         "react": "^16.13.1",
         "react-dom": "^16.13.1",
         "react-redux": "^7.2.1",

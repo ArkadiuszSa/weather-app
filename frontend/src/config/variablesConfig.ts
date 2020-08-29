@@ -3,6 +3,7 @@ export const color = {
     primaryFont: '#000000',
     secondaryFont: '#9E9E9E',
     alternativeFont: 'FFFFFF',
+    chartPoint: '#FF7575',
 };
 
 export const fontSize = {
