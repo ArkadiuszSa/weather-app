@@ -1,13 +1,13 @@
 import React from 'react';
 
-import * as S from './styles';
-
+import { weatherMock } from '../../mocks/weatherMocks';
 import { WeatherSearchComponent } from '../WeatherSearch';
 import { WeatherInfoComponent } from '../WeatherInfo';
+import * as S from './styles';
 
 export const WeatherComponent: React.FC = () => (
     <S.Wrapper>
         <WeatherSearchComponent />
-        <WeatherInfoComponent />
+        <WeatherInfoComponent weather={weatherMock} />
     </S.Wrapper>
 );
