@@ -2,14 +2,14 @@ export const color = {
     primary: '#77BCEE',
     primaryFont: '#000000',
     secondaryFont: '#9E9E9E',
-    alternativeFont: 'FFFFFF',
+    alternativeFont: '#FFFFFF',
     chartPoint: '#FF7575',
 };
 
 export const fontSize = {
     verySmall: '0.6rem',
     small: '0.8rem',
-    normal: '1rem',
+    normal: '1.2rem',
     big: '1.4rem',
     huge: '2.5rem',
     large: '3rem',

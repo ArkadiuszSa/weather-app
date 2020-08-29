@@ -3,6 +3,7 @@ import { fontSize, fontWeight, color } from 'config/variablesConfig';
 
 export const Wrapper = styled.div`
     margin: 1rem 0;
+    padding: 0 1rem;
 `;
 
 export const PlaceHeader = styled.h1`

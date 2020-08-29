@@ -1,10 +1,11 @@
 import React from 'react';
 
-import * as S from './styles';
+import { fontSize } from 'config/variablesConfig';
 
 import { Weather } from '../../models/weatherModel';
 import { WeatherParam } from '../WeatherParam';
-import { fontSize } from 'config/variablesConfig';
+import { WeatherLineChart } from '../../components/WeatherLineChart';
+import * as S from './styles';
 
 interface Props {
     weather: Weather;
@@ -33,5 +34,6 @@ export const WeatherInfoComponent: React.FC<Props> = ({ weather }) => (
                 subscript="km/h"
             />
         </S.WeatherParamsWrapper>
+        <WeatherLineChart />
     </S.Wrapper>
 );
