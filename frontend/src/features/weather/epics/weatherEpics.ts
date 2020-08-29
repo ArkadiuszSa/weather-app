@@ -25,5 +25,3 @@ export const weatherEpicFactory = (weatherService: WeatherService): Epic => {
 
     return combineEpics(getWeather);
 };
-
-console.log('test');

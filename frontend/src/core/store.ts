@@ -3,10 +3,10 @@ import { composeWithDevTools } from 'redux-devtools-extension/logOnlyInProductio
 import { createEpicMiddleware } from 'redux-observable';
 
 import { AppAction } from 'common/models/actionModel';
+import { AppState } from 'common/models/appStateModel';
 
 import { rootEpic } from './rootEpic';
 import { rootReducer } from './rootReducer';
-import { AppState } from 'common/models/appStateModel';
 
 const epicMiddleware = createEpicMiddleware<AppAction, AppAction, AppState>();
 
