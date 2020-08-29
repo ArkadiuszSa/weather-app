@@ -1,11 +1,10 @@
 stages:
-    - test
-  test:
-    image: node:12.14-alpine
-    script:
-      - cd frontend
-      - yarn
-      - yarn lint
-      - yarn build
-      - yarn test
-  
+  - test
+test:
+  image: node:12.14-alpine
+  script:
+    - cd frontend
+    - yarn
+    - yarn lint
+    - yarn build
+    - yarn test
