@@ -2,19 +2,12 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import { getWeatherAsync } from '../actions/weatherActions';
+import { WeatherComponent } from '..//components/WeatherComponent';
 
 type Props = typeof mapDispatchToProps;
 
-const WeatherContainer: React.FC<Props> = props => {
-    const onPhraseChange = (phrase: string) => {
-        props.getWeatherRequestAction(phrase);
-    };
-
-    React.useEffect(() => {
-        onPhraseChange('london');
-    }, []);
-
-    return <>hello</>;
+const WeatherContainer: React.FC<Props> = () => {
+    return <WeatherComponent />;
 };
 
 const mapDispatchToProps = {
