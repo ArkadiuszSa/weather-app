@@ -4,13 +4,16 @@ import * as S from './styles';
 
 interface Props {
     label: string;
-    value: string;
+    value: string | number;
     valueFontSize?: string;
+    subscript?: string;
 }
 
-export const WeatherParam: React.FC<Props> = ({ label, value, valueFontSize }) => (
+export const WeatherParam: React.FC<Props> = ({ label, value, valueFontSize, subscript }) => (
     <S.Wrapper>
         <S.Label>{label}</S.Label>
-        <S.ValueSpan fontSize={valueFontSize}>{value}</S.ValueSpan>
+        <S.ValueSpan fontSize={valueFontSize}>
+            {value} <S.ValueSubscript>{subscript}</S.ValueSubscript>
+        </S.ValueSpan>
     </S.Wrapper>
 );

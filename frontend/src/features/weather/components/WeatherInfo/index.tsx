@@ -3,6 +3,7 @@ import React from 'react';
 import * as S from './styles';
 
 import { Weather } from '../../models/weatherModel';
+import { WeatherParam } from '../WeatherParam';
 
 interface Props {
     weather: Weather;
@@ -10,7 +11,17 @@ interface Props {
 
 export const WeatherInfoComponent: React.FC<Props> = ({ weather }) => (
     <S.Wrapper>
-        <h1>{weather.name}</h1>
-        <span>{weather.applicableDate.toDateString()}</span>
+        <S.PlaceHeader>{weather.placeName}</S.PlaceHeader>
+        <S.WeatherDate>{weather.applicableDate.toDateString()}</S.WeatherDate>
+        <S.WeatherParamsWrapper>
+            <WeatherParam label="MAX" value={`${Math.round(weather.maxTemp)}°`} />
+            <WeatherParam label="MIN" value={`${Math.round(weather.minTemp)}°`} />
+            <WeatherParam label="HUMIDITY" value={Math.round(weather.humidity)} subscript="%" />
+            <WeatherParam
+                label="WIND SPEED"
+                value={Math.round(weather.humidity)}
+                subscript="km/h"
+            />
+        </S.WeatherParamsWrapper>
     </S.Wrapper>
 );
