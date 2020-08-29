@@ -7,7 +7,7 @@ import * as S from './styles';
 
 const data = [
     {
-        id: 'japan',
+        id: 'weather',
         data: [
             {
                 x: 'plane',

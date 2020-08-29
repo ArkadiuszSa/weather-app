@@ -18,7 +18,7 @@ export const fontSize = {
 export const fontWeight = {
     regular: '400',
     semiBold: '500',
-    bold: '800',
+    bold: '700',
 };
 
 export const fontFamily = {

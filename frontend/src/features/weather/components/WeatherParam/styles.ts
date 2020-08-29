@@ -22,6 +22,6 @@ export const ValueSpan = styled.span<ValueProps>`
 `;
 
 export const ValueSubscript = styled.span<ValueProps>`
-    font-size: ${fontSize.big};
+    font-size: ${fontSize.normal};
     font-weight: ${fontWeight.semiBold};
 `;
