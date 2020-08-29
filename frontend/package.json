@@ -33,7 +33,10 @@
         "start": "react-scripts start",
         "build": "react-scripts build",
         "test": "react-scripts test",
-        "eject": "react-scripts eject"
+        "eject": "react-scripts eject",
+        "eslint": "eslint '*/**/*.{js,ts,tsx}'",
+        "check-types": "tsc -p tsconfig.json",
+        "lint": "yarn eslint && yarn check-types"
     },
     "eslintConfig": {
         "extends": "react-app"
