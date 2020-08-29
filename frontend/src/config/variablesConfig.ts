@@ -13,3 +13,12 @@ export const fontSize = {
     huge: '2rem',
     large: '3rem',
 };
+
+export const fontWeight = {
+    regular: '400',
+    bold: '800',
+};
+
+export const fontFamily = {
+    primary: 'Raleway',
+};
