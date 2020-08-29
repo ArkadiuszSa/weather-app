@@ -9,7 +9,7 @@ import { HttpError } from 'common/models/httpErrorModels';
 import { WeatherService } from '../services/weatherServices';
 import * as actions from '../actions/weatherActions';
 
-export const matchingEpicFactory = (weatherService: WeatherService): Epic => {
+export const weatherEpicFactory = (weatherService: WeatherService): Epic => {
     const getWeather: Epic = action$ =>
         action$.pipe(
             filter(isActionOf(actions.getWeatherAsync.request)),

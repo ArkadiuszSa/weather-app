@@ -1,4 +1,4 @@
-import { map } from 'rxjs/operators';
+import { map, mergeMap } from 'rxjs/operators';
 
 import { apiEndpoints } from 'config/apiConfig';
 import { HttpService } from 'common/services/httpService';
@@ -9,13 +9,17 @@ import { PlaceData, Place } from '../models/placeModel';
 export class WeatherService {
     constructor(private readonly httpService: HttpService) {}
 
-    getPlace(phrase: string) {
+    getWeather(phrase: string) {
+        return this.getPlace(phrase).pipe(mergeMap(place => this.getWeatherData(place.weatherId)));
+    }
+
+    private getPlace(phrase: string) {
         return this.httpService
-            .GET<PlaceData>(`${apiEndpoints.place}/query=${phrase}`)
+            .GET<PlaceData[]>(`${apiEndpoints.place}/?query=${phrase}`)
             .pipe(map(this.transformToPlace));
     }
 
-    getWeather(weatherId: string) {
+    private getWeatherData(weatherId: number) {
         return this.httpService
             .GET<WeatherData>(`${apiEndpoints.weather}/${weatherId}`)
             .pipe(map(this.transformToWeather));
@@ -32,7 +36,7 @@ export class WeatherService {
         };
     }
 
-    private transformToPlace(placeData: PlaceData): Place {
+    private transformToPlace([placeData]: PlaceData[]): Place {
         return {
             title: placeData.title,
             weatherId: placeData.woeid,
