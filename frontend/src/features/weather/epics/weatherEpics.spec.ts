@@ -14,7 +14,7 @@ import { WeatherService } from '../services/weatherServices';
 describe('Weather epics', () => {
     const weatherServiceMock = WeatherService as jest.Mock<WeatherService>;
     const mockState = new StateObservable<AppState>(new Subject(), {
-        weather: defaultWeatherState,
+        weatherState: defaultWeatherState,
     });
     let weatherService: WeatherService;
 
