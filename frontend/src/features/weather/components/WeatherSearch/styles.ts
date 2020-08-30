@@ -14,14 +14,23 @@ export const SearchInput = styled.input`
     padding-bottom: 0.5rem;
     background: transparent;
     border: none;
-    border-bottom: 1px solid white;
+    border-bottom: 1px solid ${color.inactive};
     color: ${color.alternativeFont};
     caret-color: ${color.alternativeFont};
     outline: 0;
     font-size: ${fontSize.normal};
 
     &::placeholder {
+        color: ${color.inactive};
+    }
+
+    &:focus {
         color: ${color.alternativeFont};
+        border-bottom-color: ${color.alternativeFont};
+
+        &::placeholder {
+            color: ${color.alternativeFont};
+        }
     }
 `;
 
