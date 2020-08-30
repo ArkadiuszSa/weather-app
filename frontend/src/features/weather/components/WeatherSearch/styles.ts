@@ -1,16 +1,21 @@
 import styled from '@emotion/styled';
 
-import { color, fontSize, searchShadow, breakpoints } from 'config/variablesConfig';
+import {
+    color,
+    fontSize,
+    searchShadow,
+    breakpoints,
+    searchPanelShadow,
+} from 'config/variablesConfig';
 
 export const Wrapper = styled.div`
     display: flex;
     flex-direction: column;
     background-color: ${color.primary};
-    /* flex: 1; */
     ${breakpoints.lg} {
         height: 100vh;
         flex-direction: column;
-        box-shadow: 4px 4px 15px rgba(86, 82, 108, 0.2);
+        box-shadow: ${searchPanelShadow};
     }
 `;
 

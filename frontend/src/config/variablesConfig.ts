@@ -27,6 +27,7 @@ export const fontFamily = {
 };
 
 export const searchShadow = 'inset 0px -2px 9px 0px rgb(0 0 0 / 15%)';
+export const searchPanelShadow = '4px 4px 15px rgba(86, 82, 108, 0.2)';
 
 export const breakpointsValues = {
     xs: 480,
