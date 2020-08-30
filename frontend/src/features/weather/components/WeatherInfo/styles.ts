@@ -60,3 +60,11 @@ export const GeneralWeatherInfoWrapper = styled.div`
     margin: 2rem 0;
     grid-template-columns: 6rem 7rem;
 `;
+
+export const LoaderWrapper = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+`;

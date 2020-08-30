@@ -1,5 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
+import MoonLoader from 'react-spinners/MoonLoader';
 
 import { fontSize } from 'config/variablesConfig';
 
@@ -7,6 +8,7 @@ import { WeatherLineChart } from '../../components/WeatherLineChart';
 import {
     getWeatherForSelectedDate,
     getWeatherPlaceNameSelector,
+    getIsFetchingWeatherSelector,
 } from '../../selectors/weatherSelectors';
 import { WeatherParam } from '../WeatherParam';
 import { WeatherBottomButtons } from '../WeatherBottomButtons';
@@ -15,11 +17,16 @@ import * as S from './styles';
 export const WeatherInfoComponent: React.FC = () => {
     const daytimeWeather = useSelector(getWeatherForSelectedDate);
     const placeName = useSelector(getWeatherPlaceNameSelector);
+    const isFetchingWeather = useSelector(getIsFetchingWeatherSelector);
 
     return (
         <S.Wrapper>
             <S.ContentWrapper>
-                {daytimeWeather && (
+                {!daytimeWeather || isFetchingWeather ? (
+                    <S.LoaderWrapper>
+                        <MoonLoader size={50} />
+                    </S.LoaderWrapper>
+                ) : (
                     <>
                         <S.PlaceHeader>{placeName}</S.PlaceHeader>
                         <S.WeatherDate>
