@@ -12,8 +12,8 @@ interface Props {
 export const WeatherParam: React.FC<Props> = ({ label, value, valueFontSize, subscript }) => (
     <S.Wrapper>
         <S.Label>{label}</S.Label>
-        <S.ValueSpan fontSize={valueFontSize}>
+        <S.ValueWrapper fontSize={valueFontSize}>
             {value} <S.ValueSubscript>{subscript}</S.ValueSubscript>
-        </S.ValueSpan>
+        </S.ValueWrapper>
     </S.Wrapper>
 );

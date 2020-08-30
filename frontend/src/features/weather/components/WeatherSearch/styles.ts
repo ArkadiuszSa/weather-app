@@ -78,3 +78,8 @@ export const SearchOptionsWrapper = styled.div`
         height: 100%;
     }
 `;
+
+export const LoaderWrapper = styled.div`
+    width: 1rem;
+    margin-right: 1rem;
+`;

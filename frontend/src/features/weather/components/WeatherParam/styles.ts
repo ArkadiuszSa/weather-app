@@ -17,7 +17,7 @@ interface ValueProps {
     fontSize?: string;
 }
 
-export const ValueSpan = styled.span<ValueProps>`
+export const ValueWrapper = styled.div<ValueProps>`
     font-size: ${props => props.fontSize || fontSize.huge};
 `;
 

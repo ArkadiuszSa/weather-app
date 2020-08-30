@@ -22,7 +22,6 @@ export const WeatherInfoComponent: React.FC = () => {
                 {daytimeWeather && (
                     <>
                         <S.PlaceHeader>{placeName}</S.PlaceHeader>
-
                         <S.WeatherDate>
                             {daytimeWeather.applicableDate.toDateString()}
                         </S.WeatherDate>
@@ -30,13 +29,12 @@ export const WeatherInfoComponent: React.FC = () => {
                             <WeatherParam
                                 label="AVERAGE"
                                 valueFontSize={fontSize.large}
-                                value={`${Math.round(daytimeWeather.maxTemp)}°`}
+                                value={`${Math.round(daytimeWeather.avgTemp)}°`}
                             />
                             <S.WeatherStateNameWrapper>
                                 {daytimeWeather.stateName}
                             </S.WeatherStateNameWrapper>
                         </S.GeneralWeatherInfoWrapper>
-
                         <S.WeatherParamsWrapper>
                             <WeatherParam
                                 label="MAX"

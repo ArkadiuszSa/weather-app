@@ -1,23 +1,28 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import MoonLoader from 'react-spinners/MoonLoader';
 
 import searchIcon from 'assets/icons/search.svg';
 
 import { Place } from '../../models/placeModel';
 import { searchPlacesByPhraseAsync, getWeatherAsync } from '../../actions/weatherActions';
-import { getPlacesSelector } from '../../selectors/weatherSelectors';
+import { getPlacesSelector, getIsFetchingPlacesSelector } from '../../selectors/weatherSelectors';
 import * as S from './styles';
 
 export const WeatherSearchComponent: React.FC = () => {
     const [isFocusOnSearch, setIsFocusOnSearch] = React.useState(false);
     const [searchValue, setSearchValue] = React.useState('');
     const places = useSelector(getPlacesSelector);
+    const isFetchingPlaces = useSelector(getIsFetchingPlacesSelector);
+
     const dispatch = useDispatch();
 
     const onSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { value } = e.target;
         setSearchValue(value);
-        dispatch(searchPlacesByPhraseAsync.request(value));
+        if (value) {
+            dispatch(searchPlacesByPhraseAsync.request(value));
+        }
     };
 
     const onOptionClick = ({ weatherId, name }: Place) => {
@@ -29,6 +34,7 @@ export const WeatherSearchComponent: React.FC = () => {
     return (
         <S.Wrapper>
             <S.SearchWrapper>
+                <S.LoaderWrapper>{isFetchingPlaces && <MoonLoader size={20} />}</S.LoaderWrapper>
                 <S.SearchInput
                     placeholder="Start typing"
                     value={searchValue}
