@@ -1,5 +1,7 @@
 import React, { Component, ReactNode } from 'react';
 
+import { ErrorInfo } from 'common/components/ErrorInfo';
+
 interface Props {
     children: ReactNode;
 }
@@ -13,7 +15,7 @@ export class RootErrorBoundary extends Component<Props> {
 
     render() {
         if (this.state.hasErrorOcurred) {
-            return <h1>Something went wrong. You should contact with site administrator</h1>;
+            return <ErrorInfo title={'Error on page'} />;
         }
 
         return this.props.children;

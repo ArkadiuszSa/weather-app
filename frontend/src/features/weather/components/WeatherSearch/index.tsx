@@ -50,6 +50,7 @@ export const WeatherSearchComponent: React.FC = () => {
                             {place.name}
                         </S.SearchOptionButton>
                     ))}
+                    {places.length === 0 && 'No results'}
                 </S.SearchOptionsWrapper>
             )}
         </S.Wrapper>
