@@ -5,7 +5,7 @@ import { HttpService } from 'common/services/httpService';
 
 import { WeatherData, Weather } from '../models/weatherModel';
 import { PlaceData, Place } from '../models/placeModel';
-import { generateId } from 'features/weather/helpers/generateId';
+import { generateId } from '../helpers/generateId';
 
 export class WeatherService {
     constructor(private readonly httpService: HttpService) {}

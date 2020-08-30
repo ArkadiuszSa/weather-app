@@ -1,5 +1,3 @@
-import { createSelector } from 'reselect';
-
 import { AppState } from 'common/models/appStateModel';
 
 export const getWeatherStateSelector = (state: AppState) => state.weatherState;

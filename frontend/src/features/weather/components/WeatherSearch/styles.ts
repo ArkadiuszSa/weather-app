@@ -30,13 +30,17 @@ export const SearchIcon = styled.img`
     width: 1.5rem;
 `;
 
-export const SearchOption = styled.button`
+export const SearchOptionButton = styled.button`
     display: block;
     width: 100%;
     border: none;
     padding: 1rem;
-    background-color: ${color.primary};
     color: ${color.alternativeFont};
     font-size: ${fontSize.normal};
     text-align: left;
+    background: transparent;
+`;
+
+export const SearchOptionsWrapper = styled.div`
+    background-color: ${color.primary};
 `;
