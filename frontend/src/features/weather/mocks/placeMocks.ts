@@ -7,7 +7,6 @@ export const placeMock: Place = {
 };
 
 export const placeDataMock: PlaceData = {
-    id: 1,
     woeid: 33,
     title: 'London',
 };

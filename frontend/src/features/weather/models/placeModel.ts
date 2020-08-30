@@ -1,5 +1,4 @@
 export interface PlaceData {
-    id: number;
     title: string;
     woeid: number;
 }
