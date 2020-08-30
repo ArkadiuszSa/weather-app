@@ -1,5 +1,13 @@
 import { combineEpics } from 'redux-observable';
-import { filter, catchError, map, pluck, exhaustMap, debounceTime } from 'rxjs/operators';
+import {
+    filter,
+    catchError,
+    map,
+    pluck,
+    switchMap,
+    exhaustMap,
+    debounceTime,
+} from 'rxjs/operators';
 import { of } from 'rxjs';
 import { isActionOf } from 'typesafe-actions';
 
@@ -10,12 +18,26 @@ import { WeatherService } from '../services/weatherServices';
 import * as actions from '../actions/weatherActions';
 
 export const weatherEpicFactory = (weatherService: WeatherService): Epic => {
-    const getWeather: Epic = action$ =>
+    const searchPlaceEpic: Epic = action$ =>
         action$.pipe(
-            filter(isActionOf(actions.getWeatherAsync.request)),
+            filter(isActionOf(actions.searchPlacesByPhraseAsync.request)),
             debounceTime(300),
             pluck('payload'),
             exhaustMap(phrase =>
+                weatherService.getPlaces(phrase).pipe(
+                    map(actions.searchPlacesByPhraseAsync.success),
+                    catchError((err: HttpError) =>
+                        of(actions.searchPlacesByPhraseAsync.failure(err)),
+                    ),
+                ),
+            ),
+        );
+
+    const getWeatherEpic: Epic = action$ =>
+        action$.pipe(
+            filter(isActionOf(actions.getWeatherAsync.request)),
+            pluck('payload'),
+            switchMap(phrase =>
                 weatherService.getWeather(phrase).pipe(
                     map(actions.getWeatherAsync.success),
                     catchError((err: HttpError) => of(actions.getWeatherAsync.failure(err))),
@@ -23,5 +45,5 @@ export const weatherEpicFactory = (weatherService: WeatherService): Epic => {
             ),
         );
 
-    return combineEpics(getWeather);
+    return combineEpics(searchPlaceEpic, getWeatherEpic);
 };

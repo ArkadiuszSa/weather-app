@@ -1,8 +1,4 @@
-export interface WeatherResponse {
-    consolidated_weather: WeatherData[];
-}
-
-export interface WeatherData {
+export interface DaytimeWeatherData {
     applicable_date: string;
     weather_state_name: string;
     the_temp: number;
@@ -10,16 +6,24 @@ export interface WeatherData {
     max_temp: number;
     wind_speed: number;
     humidity: number;
-    title: string;
 }
 
-export interface Weather {
+export interface DaytimeWeather {
     applicableDate: Date;
-    name: string;
+    stateName: string;
     avgTemp: number;
     minTemp: number;
     maxTemp: number;
     windSpeed: number;
     humidity: number;
+}
+
+export interface WeatherData {
+    consolidated_weather: DaytimeWeatherData[];
+    title: string;
+}
+
+export interface Weather {
+    daytimeWeathers: DaytimeWeather[];
     placeName: string;
 }

@@ -2,18 +2,18 @@ import React from 'react';
 
 import { fontSize } from 'config/variablesConfig';
 
-import { Weather } from '../../models/weatherModel';
+import { DaytimeWeather } from '../../models/weatherModel';
 import { WeatherParam } from '../WeatherParam';
 import { WeatherLineChart } from '../../components/WeatherLineChart';
 import * as S from './styles';
 
 interface Props {
-    weather: Weather;
+    weather: DaytimeWeather;
 }
 
 export const WeatherInfoComponent: React.FC<Props> = ({ weather }) => (
     <S.Wrapper>
-        <S.PlaceHeader>{weather.placeName}</S.PlaceHeader>
+        {/* <S.PlaceHeader>{weather.placeName}</S.PlaceHeader> */}
         <S.WeatherDate>{weather.applicableDate.toDateString()}</S.WeatherDate>
         <S.GeneralWeatherInfoWrapper>
             <WeatherParam
@@ -21,7 +21,7 @@ export const WeatherInfoComponent: React.FC<Props> = ({ weather }) => (
                 valueFontSize={fontSize.large}
                 value={`${Math.round(weather.maxTemp)}°`}
             />
-            <S.WeatherStateNameWrapper>{weather.name}</S.WeatherStateNameWrapper>
+            <S.WeatherStateNameWrapper>{weather.stateName}</S.WeatherStateNameWrapper>
         </S.GeneralWeatherInfoWrapper>
 
         <S.WeatherParamsWrapper>
