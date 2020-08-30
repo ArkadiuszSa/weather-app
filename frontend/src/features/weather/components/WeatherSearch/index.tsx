@@ -1,20 +1,17 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import searchIcon from 'assets/icons/search.svg';
 
-import * as S from './styles';
 import { Place } from '../../models/placeModel';
 import { searchPlacesByPhraseAsync, getWeatherAsync } from '../../actions/weatherActions';
+import { getPlacesSelector } from '../../selectors/weatherSelectors';
+import * as S from './styles';
 
-interface Props {
-    places: Place[];
-}
-
-export const WeatherSearchComponent: React.FC<Props> = props => {
+export const WeatherSearchComponent: React.FC = () => {
     const [isFocusOnSearch, setIsFocusOnSearch] = React.useState(false);
     const [searchValue, setSearchValue] = React.useState('');
-
+    const places = useSelector(getPlacesSelector);
     const dispatch = useDispatch();
 
     const onSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -42,7 +39,7 @@ export const WeatherSearchComponent: React.FC<Props> = props => {
             </S.SearchWrapper>
             {isFocusOnSearch && (
                 <S.SearchOptionsWrapper>
-                    {props.places.map(place => (
+                    {places.map(place => (
                         <S.SearchOptionButton key={place.id} onClick={() => onOptionClick(place)}>
                             {place.name}
                         </S.SearchOptionButton>
