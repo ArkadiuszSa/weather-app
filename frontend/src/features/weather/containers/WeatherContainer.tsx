@@ -15,7 +15,7 @@ const WeatherContainer: React.FC<Props> = ({
             searchPlacesByPhraseRequestAction(phrase);
             getWeatherRequestAction(638242);
         },
-        [searchPlacesByPhraseRequestAction],
+        [searchPlacesByPhraseRequestAction, getWeatherRequestAction],
     );
 
     React.useEffect(() => {
