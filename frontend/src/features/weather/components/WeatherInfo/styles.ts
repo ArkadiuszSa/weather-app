@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+
 import { fontSize, fontWeight, color } from 'config/variablesConfig';
 
 export const Wrapper = styled.div`

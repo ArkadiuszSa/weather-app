@@ -2,7 +2,7 @@ import { of } from 'rxjs';
 
 import { HttpService } from 'common/services/httpService';
 
-import { placeDataMock, placeMock } from '../mocks/placeMocks';
+import { placeDataMock } from '../mocks/placeMocks';
 import { WeatherService } from '../services/weatherServices';
 import { weatherMock, weatherDataMock } from '../mocks/weatherMocks';
 
@@ -19,8 +19,11 @@ describe('WeatherService', () => {
             jest.spyOn(httpService, 'GET').mockImplementation(() => of([placeDataMock]));
 
             const weatherService = new WeatherService(httpService);
-            weatherService.getPlaces('London').subscribe(res => {
-                expect(res).toMatchObject([placeMock]);
+            weatherService.getPlaces('London').subscribe(([res]) => {
+                expect(res).toHaveProperty('id');
+                expect(res).toHaveProperty('weatherId', 33);
+                expect(res).toHaveProperty('name', 'London');
+
                 done();
             });
         });
@@ -43,8 +46,10 @@ describe('WeatherService', () => {
             jest.spyOn(httpService, 'GET').mockImplementation(() => of([placeDataMock]));
 
             const weatherService = new WeatherService(httpService);
-            weatherService.getPlaces('London').subscribe(res => {
-                expect(res).toMatchObject([placeMock]);
+            weatherService.getPlaces('London').subscribe(([res]) => {
+                expect(res).toHaveProperty('id');
+                expect(res).toHaveProperty('weatherId', 33);
+                expect(res).toHaveProperty('name', 'London');
                 done();
             });
         });

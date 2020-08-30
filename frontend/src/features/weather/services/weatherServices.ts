@@ -5,6 +5,7 @@ import { HttpService } from 'common/services/httpService';
 
 import { WeatherData, Weather } from '../models/weatherModel';
 import { PlaceData, Place } from '../models/placeModel';
+import { generateId } from '../helpers/generateId';
 
 export class WeatherService {
     constructor(private readonly httpService: HttpService) {}
@@ -25,6 +26,7 @@ export class WeatherService {
         return {
             placeName: weatherData.title,
             daytimeWeathers: weatherData.consolidated_weather.map(weatherData => ({
+                id: weatherData.id,
                 applicableDate: new Date(weatherData.applicable_date),
                 stateName: weatherData.weather_state_name,
                 avgTemp: weatherData.the_temp,
@@ -36,8 +38,9 @@ export class WeatherService {
         };
     }
 
-    private transformToPlace(placeData: PlaceData): Place {
+    private transformToPlace(placeData: PlaceData, index: number): Place {
         return {
+            id: generateId(index),
             name: placeData.title,
             weatherId: placeData.woeid,
         };

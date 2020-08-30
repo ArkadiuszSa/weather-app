@@ -5,11 +5,15 @@ import arrowIcon from 'assets/icons/arrow.svg';
 import { daytimeWeatherMock } from '../../mocks/weatherMocks';
 import { WeatherSearchComponent } from '../WeatherSearch';
 import { WeatherInfoComponent } from '../WeatherInfo';
+import { Place } from '../../models/placeModel';
 import * as S from './styles';
 
-export const WeatherComponent: React.FC = () => (
+interface Props {
+    places: Place[];
+}
+export const WeatherComponent: React.FC<Props> = ({ places }) => (
     <S.Wrapper>
-        <WeatherSearchComponent />
+        <WeatherSearchComponent places={places} />
         <WeatherInfoComponent weather={daytimeWeatherMock} />
         <S.BottomButtonsWrapper>
             <S.Button>

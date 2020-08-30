@@ -10,11 +10,13 @@ export interface WeatherState {
     isFetching: boolean;
     weather?: Weather;
     places: Place[];
+    selectedDate: Date;
 }
 
 export const defaultWeatherState: WeatherState = {
     isFetching: false,
     places: [],
+    selectedDate: new Date(),
 };
 
 export const weatherReducer = createReducer<WeatherState, AppAction>(defaultWeatherState)
