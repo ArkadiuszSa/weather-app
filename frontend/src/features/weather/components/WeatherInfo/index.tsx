@@ -10,6 +10,7 @@ import {
     getWeatherPlaceNameSelector,
     getIsFetchingWeatherSelector,
 } from '../../selectors/weatherSelectors';
+import { DaytimeWeatherChartKey } from '../../models/weatherModel';
 import { WeatherParam } from '../WeatherParam';
 import { WeatherBottomButtons } from '../WeatherBottomButtons';
 import * as S from './styles';
@@ -37,6 +38,7 @@ export const WeatherInfoComponent: React.FC = () => {
                                 label="AVERAGE"
                                 valueFontSize={fontSize.large}
                                 value={`${Math.round(daytimeWeather.avgTemp)}°`}
+                                chartSourceKey={DaytimeWeatherChartKey.AvgTemp}
                             />
                             <S.WeatherStateNameWrapper>
                                 {daytimeWeather.stateName}
@@ -46,19 +48,23 @@ export const WeatherInfoComponent: React.FC = () => {
                             <WeatherParam
                                 label="MAX"
                                 value={`${Math.round(daytimeWeather.maxTemp)}°`}
+                                chartSourceKey={DaytimeWeatherChartKey.MaxTemp}
                             />
                             <WeatherParam
                                 label="MIN"
                                 value={`${Math.round(daytimeWeather.minTemp)}°`}
+                                chartSourceKey={DaytimeWeatherChartKey.MinTemp}
                             />
                             <WeatherParam
                                 label="HUMIDITY"
                                 value={Math.round(daytimeWeather.humidity)}
+                                chartSourceKey={DaytimeWeatherChartKey.Humidity}
                                 subscript="%"
                             />
                             <WeatherParam
                                 label="WIND SPEED"
-                                value={Math.round(daytimeWeather.humidity)}
+                                value={Math.round(daytimeWeather.windSpeed)}
+                                chartSourceKey={DaytimeWeatherChartKey.WindSpeed}
                                 subscript="km/h"
                             />
                         </S.WeatherParamsWrapper>

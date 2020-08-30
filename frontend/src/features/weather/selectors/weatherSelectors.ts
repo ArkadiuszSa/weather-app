@@ -3,7 +3,6 @@ import { createSelector } from 'reselect';
 import { AppState } from 'common/models/appStateModel';
 
 import { transformToTimeSeriesChartData } from '../helpers/transformDataToChartData';
-import { DaytimeWeatherChartKey } from '../models/weatherModel';
 
 export const getWeatherStateSelector = (state: AppState) => state.weatherState;
 export const getWeatherSelector = (state: AppState) => getWeatherStateSelector(state).weather;
@@ -16,18 +15,22 @@ export const getIsFetchingPlacesSelector = (state: AppState) =>
     getWeatherStateSelector(state).isFetchingPlaces;
 export const getSelectedDateIndexSelector = (state: AppState) =>
     getWeatherStateSelector(state).selectedWeatherDayIndex;
+export const getChartDataSourceKey = (state: AppState) =>
+    getWeatherStateSelector(state).chartDataSourceKey;
 export const getDaytimeWeathersSelector = (state: AppState) =>
     getWeatherSelector(state)?.daytimeWeathers;
 
 export const getWeatherForSelectedDate = createSelector(
     getSelectedDateIndexSelector,
     getDaytimeWeathersSelector,
-    (selectedDaytimeWeatherIndex, daytimeWeathers) =>
-        daytimeWeathers?.[selectedDaytimeWeatherIndex],
+    (daytimeWeatherIndex, daytimeWeathers) => daytimeWeathers?.[daytimeWeatherIndex],
 );
 
-export const getWeatherChartData = createSelector(getDaytimeWeathersSelector, daytimeWeathers =>
-    transformToTimeSeriesChartData('avgTemp', daytimeWeathers, DaytimeWeatherChartKey.AvgTemp),
+export const getWeatherChartData = createSelector(
+    getDaytimeWeathersSelector,
+    getChartDataSourceKey,
+    (daytimeWeathers, chartDataSourceKey) =>
+        transformToTimeSeriesChartData(daytimeWeathers, chartDataSourceKey),
 );
 
 export const getIsNextDaytimeWeatherSelector = createSelector(

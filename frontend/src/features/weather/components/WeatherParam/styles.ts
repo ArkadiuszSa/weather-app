@@ -5,6 +5,7 @@ import { color, fontSize, fontWeight } from 'config/variablesConfig';
 export const Wrapper = styled.div`
     display: flex;
     flex-direction: column;
+    cursor: pointer;
 `;
 
 export const Label = styled.label`
@@ -14,14 +15,16 @@ export const Label = styled.label`
 `;
 
 interface ValueProps {
+    color: string;
     fontSize?: string;
 }
 
 export const ValueWrapper = styled.div<ValueProps>`
     font-size: ${props => props.fontSize || fontSize.huge};
+    color: ${props => props.color};
 `;
 
-export const ValueSubscript = styled.span<ValueProps>`
+export const ValueSubscript = styled.span`
     font-size: ${fontSize.normal};
     font-weight: ${fontWeight.semiBold};
 `;
