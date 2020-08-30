@@ -27,7 +27,7 @@ export const WeatherSearchComponent: React.FC = () => {
     };
 
     return (
-        <>
+        <S.Wrapper>
             <S.SearchWrapper>
                 <S.SearchInput
                     placeholder="Start typing"
@@ -46,6 +46,6 @@ export const WeatherSearchComponent: React.FC = () => {
                     ))}
                 </S.SearchOptionsWrapper>
             )}
-        </>
+        </S.Wrapper>
     );
 };

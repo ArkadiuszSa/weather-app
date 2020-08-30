@@ -6,7 +6,7 @@ export const BottomButtonsWrapper = styled.div`
     display: flex;
     justify-content: space-between;
     margin-top: auto;
-    margin-bottom: 2rem;
+    padding-bottom: 2rem;
 `;
 
 export const Button = styled.button`

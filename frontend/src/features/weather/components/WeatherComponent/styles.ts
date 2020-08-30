@@ -1,11 +1,13 @@
 import styled from '@emotion/styled';
+import { breakpoints } from 'config/variablesConfig';
 
-export const LayoutWrapper = styled.div`
+export const LayoutWrapper = styled.main`
     height: 100vh;
     width: 100%;
-`;
 
-export const Wrapper = styled.main`
-    margin: auto;
-    max-width: 1200px;
+    ${breakpoints.lg} {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
 `;

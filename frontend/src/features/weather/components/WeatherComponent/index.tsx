@@ -6,9 +6,7 @@ import * as S from './styles';
 
 export const WeatherComponent: React.FC = () => (
     <S.LayoutWrapper>
-        <S.Wrapper>
-            <WeatherSearchComponent />
-            <WeatherInfoComponent />
-        </S.Wrapper>
+        <WeatherSearchComponent />
+        <WeatherInfoComponent />
     </S.LayoutWrapper>
 );

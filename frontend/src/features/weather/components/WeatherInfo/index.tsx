@@ -17,8 +17,8 @@ export const WeatherInfoComponent: React.FC = () => {
     const placeName = useSelector(getWeatherPlaceNameSelector);
 
     return (
-        <>
-            <S.Wrapper>
+        <S.Wrapper>
+            <S.ContentWrapper>
                 {daytimeWeather && (
                     <>
                         <S.PlaceHeader>{placeName}</S.PlaceHeader>
@@ -60,8 +60,8 @@ export const WeatherInfoComponent: React.FC = () => {
                         <WeatherLineChart />
                     </>
                 )}
-            </S.Wrapper>
-            <WeatherBottomButtons />
-        </>
+                <WeatherBottomButtons />
+            </S.ContentWrapper>
+        </S.Wrapper>
     );
 };
