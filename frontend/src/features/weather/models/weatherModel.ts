@@ -36,4 +36,5 @@ export enum DaytimeWeatherChartKey {
     MaxTemp = 'maxTemp',
     MinTemp = 'minTemp',
     Humidity = 'humidity',
+    WindSpeed = 'windSpeed',
 }

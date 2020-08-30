@@ -2,7 +2,7 @@ import { createAsyncAction, createAction } from 'typesafe-actions';
 
 import { HttpError } from 'common/models/httpErrorModels';
 
-import { Weather } from './../models/weatherModel';
+import { Weather, DaytimeWeatherChartKey } from './../models/weatherModel';
 import { Place } from './../models/placeModel';
 
 export const searchPlacesByPhraseAsync = createAsyncAction(
@@ -18,3 +18,6 @@ export const getWeatherAsync = createAsyncAction(
 )<number, Weather, HttpError>();
 
 export const setSelectedDateIndexAction = createAction('SET_SELECTED_DATE_INDEX')<number>();
+export const setChartSourceKeyAction = createAction('SET_CHART_SOURCE_KEY')<
+    DaytimeWeatherChartKey
+>();

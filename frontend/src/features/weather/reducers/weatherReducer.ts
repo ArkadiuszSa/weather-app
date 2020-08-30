@@ -3,16 +3,16 @@ import { createReducer } from 'typesafe-actions';
 import { AppAction } from 'common/models/actionModel';
 
 import * as actions from '../actions/weatherActions';
-import { Weather } from '../models/weatherModel';
+import { Weather, DaytimeWeatherChartKey } from '../models/weatherModel';
 import { Place } from '../models/placeModel';
 
 export interface WeatherState {
     isFetchingPlaces: boolean;
     isFetchingWeather: boolean;
-
     weather?: Weather;
     places: Place[];
     selectedWeatherDayIndex: number;
+    chartDataSourceKey: DaytimeWeatherChartKey;
 }
 
 export const defaultWeatherState: WeatherState = {
@@ -20,6 +20,7 @@ export const defaultWeatherState: WeatherState = {
     isFetchingWeather: false,
     places: [],
     selectedWeatherDayIndex: 0,
+    chartDataSourceKey: DaytimeWeatherChartKey.AvgTemp,
 };
 
 export const weatherReducer = createReducer<WeatherState, AppAction>(defaultWeatherState)
@@ -54,4 +55,8 @@ export const weatherReducer = createReducer<WeatherState, AppAction>(defaultWeat
     .handleAction(actions.setSelectedDateIndexAction, (state, action) => ({
         ...state,
         selectedWeatherDayIndex: action.payload,
+    }))
+    .handleAction(actions.setChartSourceKeyAction, (state, action) => ({
+        ...state,
+        chartDataSourceKey: action.payload,
     }));
