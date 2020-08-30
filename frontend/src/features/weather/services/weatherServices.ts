@@ -13,7 +13,11 @@ export class WeatherService {
     getPlaces(phrase: string) {
         return this.httpService
             .GET<PlaceData[]>(`${apiEndpoints.place}/?query=${phrase}`)
-            .pipe(map(places => places.map(this.transformToPlace)));
+            .pipe(
+                map(places =>
+                    places.map(this.transformToPlace).filter((_place, index) => index < 10),
+                ),
+            );
     }
 
     getWeather(weatherId: number) {

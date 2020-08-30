@@ -10,7 +10,10 @@ export const getWeatherSelector = (state: AppState) => getWeatherStateSelector(s
 export const getWeatherPlaceNameSelector = (state: AppState) =>
     getWeatherSelector(state)?.placeName;
 export const getPlacesSelector = (state: AppState) => getWeatherStateSelector(state).places;
-export const getIsFetchingSelector = (state: AppState) => getWeatherStateSelector(state).isFetching;
+export const getIsFetchingWeatherSelector = (state: AppState) =>
+    getWeatherStateSelector(state).isFetchingWeather;
+export const getIsFetchingPlacesSelector = (state: AppState) =>
+    getWeatherStateSelector(state).isFetchingPlaces;
 export const getSelectedDateIndexSelector = (state: AppState) =>
     getWeatherStateSelector(state).selectedWeatherDayIndex;
 export const getDaytimeWeathersSelector = (state: AppState) =>
