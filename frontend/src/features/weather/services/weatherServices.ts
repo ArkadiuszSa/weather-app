@@ -9,7 +9,7 @@ import { PlaceData, Place } from '../models/placeModel';
 export class WeatherService {
     constructor(private readonly httpService: HttpService) {}
 
-    getPlace(phrase: string) {
+    getPlaces(phrase: string) {
         return this.httpService
             .GET<PlaceData[]>(`${apiEndpoints.place}/?query=${phrase}`)
             .pipe(map(places => places.map(this.transformToPlace)));

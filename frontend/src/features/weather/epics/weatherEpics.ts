@@ -18,13 +18,13 @@ import { WeatherService } from '../services/weatherServices';
 import * as actions from '../actions/weatherActions';
 
 export const weatherEpicFactory = (weatherService: WeatherService): Epic => {
-    const getPlaceEpic: Epic = action$ =>
+    const searchPlaceEpic: Epic = action$ =>
         action$.pipe(
             filter(isActionOf(actions.searchPlacesByPhraseAsync.request)),
             debounceTime(300),
             pluck('payload'),
             exhaustMap(phrase =>
-                weatherService.getPlace(phrase).pipe(
+                weatherService.getPlaces(phrase).pipe(
                     map(actions.searchPlacesByPhraseAsync.success),
                     catchError((err: HttpError) =>
                         of(actions.searchPlacesByPhraseAsync.failure(err)),
@@ -45,5 +45,5 @@ export const weatherEpicFactory = (weatherService: WeatherService): Epic => {
             ),
         );
 
-    return combineEpics(getPlaceEpic, getWeatherEpic);
+    return combineEpics(searchPlaceEpic, getWeatherEpic);
 };
