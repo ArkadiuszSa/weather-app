@@ -1,12 +1,33 @@
 import styled from '@emotion/styled';
 
-import { color, fontSize, searchShadow } from 'config/variablesConfig';
+import {
+    color,
+    fontSize,
+    searchShadow,
+    breakpoints,
+    searchPanelShadow,
+} from 'config/variablesConfig';
+
+export const Wrapper = styled.div`
+    display: flex;
+    flex-direction: column;
+    background-color: ${color.primary};
+    ${breakpoints.lg} {
+        height: 100vh;
+        flex-direction: column;
+        box-shadow: ${searchPanelShadow};
+    }
+`;
 
 export const SearchWrapper = styled.div`
     display: flex;
     padding: 2rem 1rem;
     background: ${color.primary};
     box-shadow: ${searchShadow};
+
+    ${breakpoints.lg} {
+        box-shadow: none;
+    }
 `;
 
 export const SearchInput = styled.input`
@@ -52,4 +73,8 @@ export const SearchOptionButton = styled.button`
 
 export const SearchOptionsWrapper = styled.div`
     background-color: ${color.primary};
+
+    ${breakpoints.lg} {
+        height: 100%;
+    }
 `;
