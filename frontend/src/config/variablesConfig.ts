@@ -4,7 +4,7 @@ export const color = {
     secondaryFont: '#9E9E9E',
     alternativeFont: '#FFFFFF',
     chartPoint: '#FF7575',
-    inactive: '#DEDEDE',
+    inactive: '#E8E8E8',
 };
 
 export const fontSize = {

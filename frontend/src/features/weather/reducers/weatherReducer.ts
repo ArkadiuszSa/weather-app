@@ -10,13 +10,13 @@ export interface WeatherState {
     isFetching: boolean;
     weather?: Weather;
     places: Place[];
-    selectedDate: Date;
+    selectedWeatherDayIndex: number;
 }
 
 export const defaultWeatherState: WeatherState = {
     isFetching: false,
     places: [],
-    selectedDate: new Date(),
+    selectedWeatherDayIndex: 0,
 };
 
 export const weatherReducer = createReducer<WeatherState, AppAction>(defaultWeatherState)
@@ -44,7 +44,7 @@ export const weatherReducer = createReducer<WeatherState, AppAction>(defaultWeat
             isFetching: false,
         }),
     )
-    .handleAction(actions.setSelectedDateAction, (state, action) => ({
+    .handleAction(actions.setSelectedDateIndexAction, (state, action) => ({
         ...state,
-        selectedDate: action.payload,
+        selectedWeatherDayIndex: action.payload,
     }));

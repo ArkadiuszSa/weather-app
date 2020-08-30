@@ -17,4 +17,4 @@ export const getWeatherAsync = createAsyncAction(
     'GET_WEATHER_FAILED',
 )<number, Weather, HttpError>();
 
-export const setSelectedDateAction = createAction('SET_SELECTED_DATE')<Date>();
+export const setSelectedDateIndexAction = createAction('SET_SELECTED_DATE_INDEX')<number>();
