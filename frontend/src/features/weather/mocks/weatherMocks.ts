@@ -6,6 +6,7 @@ import {
 } from 'features/weather/models/weatherModel';
 
 export const daytimeWeatherMock: DaytimeWeather = {
+    id: 1,
     stateName: 'Heave Cloud',
     applicableDate: new Date('2020-08-29'),
     avgTemp: 22.222,
@@ -16,6 +17,7 @@ export const daytimeWeatherMock: DaytimeWeather = {
 };
 
 export const daytimeWeatherDataMock: DaytimeWeatherData = {
+    id: 1,
     weather_state_name: 'Heave Cloud',
     applicable_date: '2020-08-29',
     the_temp: 22.222,

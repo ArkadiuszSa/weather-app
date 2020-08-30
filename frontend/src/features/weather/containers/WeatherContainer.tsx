@@ -1,14 +1,17 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { createSelector } from 'reselect';
 
 import { getWeatherAsync, searchPlacesByPhraseAsync } from '../actions/weatherActions';
 import { WeatherComponent } from '../components/WeatherComponent';
+import { getPlacesSelector } from '../selectors/weatherSelectors';
 
-type Props = typeof mapDispatchToProps;
+type Props = ReturnType<typeof mapStateToProps> & typeof mapDispatchToProps;
 
 const WeatherContainer: React.FC<Props> = ({
     searchPlacesByPhraseRequestAction,
     getWeatherRequestAction,
+    ...props
 }) => {
     const onPhraseChange = React.useCallback(
         (phrase: string) => {
@@ -22,12 +25,16 @@ const WeatherContainer: React.FC<Props> = ({
         onPhraseChange('be');
     }, [onPhraseChange]);
 
-    return <WeatherComponent />;
+    return <WeatherComponent places={props.places} />;
 };
+
+const mapStateToProps = createSelector(getPlacesSelector, places => ({
+    places,
+}));
 
 const mapDispatchToProps = {
     searchPlacesByPhraseRequestAction: searchPlacesByPhraseAsync.request,
     getWeatherRequestAction: getWeatherAsync.request,
 };
 
-export default connect(null, mapDispatchToProps)(WeatherContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(WeatherContainer);

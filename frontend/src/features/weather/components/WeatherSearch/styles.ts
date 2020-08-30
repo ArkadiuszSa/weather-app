@@ -1,11 +1,12 @@
 import styled from '@emotion/styled';
 
-import { color } from 'config/variablesConfig';
+import { color, fontSize, searchShadow } from 'config/variablesConfig';
 
-export const SearchWrapper = styled.main`
+export const SearchWrapper = styled.div`
     display: flex;
     padding: 2rem 1rem;
     background: ${color.primary};
+    box-shadow: ${searchShadow};
 `;
 
 export const SearchInput = styled.input`
@@ -17,6 +18,7 @@ export const SearchInput = styled.input`
     color: ${color.alternativeFont};
     caret-color: ${color.alternativeFont};
     outline: 0;
+    font-size: ${fontSize.normal};
 
     &::placeholder {
         color: ${color.alternativeFont};
@@ -26,4 +28,15 @@ export const SearchInput = styled.input`
 export const SearchIcon = styled.img`
     margin-left: 1rem;
     width: 1.5rem;
+`;
+
+export const SearchOption = styled.button`
+    display: block;
+    width: 100%;
+    border: none;
+    padding: 1rem;
+    background-color: ${color.primary};
+    color: ${color.alternativeFont};
+    font-size: ${fontSize.normal};
+    text-align: left;
 `;

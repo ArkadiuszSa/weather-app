@@ -4,6 +4,7 @@ export const color = {
     secondaryFont: '#9E9E9E',
     alternativeFont: '#FFFFFF',
     chartPoint: '#FF7575',
+    inactive: '#DEDEDE',
 };
 
 export const fontSize = {
@@ -24,3 +25,5 @@ export const fontWeight = {
 export const fontFamily = {
     primary: "'Open Sans', sans-serif",
 };
+
+export const searchShadow = 'inset 0px -2px 9px 0px rgb(0 0 0 / 15%)';
