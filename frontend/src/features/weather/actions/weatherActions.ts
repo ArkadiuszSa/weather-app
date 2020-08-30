@@ -1,4 +1,4 @@
-import { createAsyncAction } from 'typesafe-actions';
+import { createAsyncAction, createAction } from 'typesafe-actions';
 
 import { HttpError } from 'common/models/httpErrorModels';
 
@@ -16,3 +16,5 @@ export const getWeatherAsync = createAsyncAction(
     'GET_WEATHER_SUCCEED',
     'GET_WEATHER_FAILED',
 )<number, Weather, HttpError>();
+
+export const setSelectedDateAction = createAction('SET_SELECTED_DATE')<Date>();

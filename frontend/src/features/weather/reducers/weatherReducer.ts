@@ -43,4 +43,8 @@ export const weatherReducer = createReducer<WeatherState, AppAction>(defaultWeat
             ...state,
             isFetching: false,
         }),
-    );
+    )
+    .handleAction(actions.setSelectedDateAction, (state, action) => ({
+        ...state,
+        selectedDate: action.payload,
+    }));

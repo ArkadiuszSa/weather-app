@@ -29,7 +29,7 @@ export const WeatherInfoComponent: React.FC<Props> = () => {
                     <S.WeatherDate>{daytimeWeather.applicableDate.toDateString()}</S.WeatherDate>
                     <S.GeneralWeatherInfoWrapper>
                         <WeatherParam
-                            label="MAX"
+                            label="AVERAGE"
                             valueFontSize={fontSize.large}
                             value={`${Math.round(daytimeWeather.maxTemp)}°`}
                         />

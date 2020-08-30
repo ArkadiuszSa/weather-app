@@ -11,6 +11,7 @@ import * as S from './styles';
 interface Props {
     places: Place[];
 }
+
 export const WeatherComponent: React.FC<Props> = ({ places }) => (
     <S.Wrapper>
         <WeatherSearchComponent places={places} />

@@ -30,3 +30,10 @@ export interface Weather {
     daytimeWeathers: DaytimeWeather[];
     placeName: string;
 }
+
+export enum DaytimeWeatherChartKey {
+    AvgTemp = 'avgTemp',
+    MaxTemp = 'maxTemp',
+    MinTemp = 'minTemp',
+    Humidity = 'humidity',
+}

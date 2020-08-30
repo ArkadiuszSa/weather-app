@@ -3,6 +3,8 @@ import { createSelector } from 'reselect';
 import { AppState } from 'common/models/appStateModel';
 
 import { checkIfDatesAreOnSameDay } from '../helpers/checkIfDatesAreOnSameDay';
+import { transformToTimeSeriesChartData } from '../helpers/transformDataToChartData';
+import { DaytimeWeatherChartKey } from '../models/weatherModel';
 
 export const getWeatherStateSelector = (state: AppState) => state.weatherState;
 export const getWeatherSelector = (state: AppState) => getWeatherStateSelector(state).weather;
@@ -22,4 +24,8 @@ export const getWeatherForSelectedDate = createSelector(
         daytimeWeathers?.find(({ applicableDate }) =>
             checkIfDatesAreOnSameDay(selectedDate, applicableDate),
         ),
+);
+
+export const getWeatherChartData = createSelector(getDaytimeWeathersSelector, daytimeWeathers =>
+    transformToTimeSeriesChartData('avgTemp', daytimeWeathers, DaytimeWeatherChartKey.AvgTemp),
 );
