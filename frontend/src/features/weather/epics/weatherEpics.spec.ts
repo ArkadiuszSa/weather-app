@@ -5,6 +5,7 @@ import { AppState } from 'common/models/appStateModel';
 import { mockedError } from 'common/mocks/mockedError';
 
 import { placeMock } from '../mocks/placeMocks';
+import { weatherMock } from '../mocks/weatherMocks';
 import { defaultWeatherState } from '../reducers/weatherReducer';
 import * as actions from '../actions/weatherActions';
 import { weatherEpicFactory } from './weatherEpics';
@@ -25,10 +26,10 @@ describe('Weather epics', () => {
         it('should fetch places', done => {
             jest.spyOn(weatherService, 'getPlaces').mockImplementation(() => of([placeMock]));
 
-            const meetingsEpicFactoryInstance = weatherEpicFactory(weatherService);
-            const action$ = of(actions.searchPlacesByPhraseAsync.request('Berlin'));
+            const weatherEpicFactoryInstance = weatherEpicFactory(weatherService);
+            const action$ = of(actions.searchPlacesByPhraseAsync.request('London'));
 
-            meetingsEpicFactoryInstance(new ActionsObservable(action$), mockState, null).subscribe(
+            weatherEpicFactoryInstance(new ActionsObservable(action$), mockState, null).subscribe(
                 res => {
                     expect(res).toMatchObject(
                         actions.searchPlacesByPhraseAsync.success([placeMock]),
@@ -44,12 +45,45 @@ describe('Weather epics', () => {
                 throwError(mockedError),
             );
 
-            const meetingsEpicFactoryInstance = weatherEpicFactory(weatherService);
-            const action$ = of(actions.searchPlacesByPhraseAsync.request('Berlin'));
+            const weatherEpicFactoryInstance = weatherEpicFactory(weatherService);
+            const action$ = of(actions.searchPlacesByPhraseAsync.request('London'));
 
-            meetingsEpicFactoryInstance(new ActionsObservable(action$), mockState, null).subscribe(
+            weatherEpicFactoryInstance(new ActionsObservable(action$), mockState, null).subscribe(
                 res => {
                     expect(res).toEqual(actions.searchPlacesByPhraseAsync.failure(mockedError));
+
+                    done();
+                },
+            );
+        });
+    });
+    describe('getWeather epic', () => {
+        it('should fetch weather', done => {
+            jest.spyOn(weatherService, 'getWeather').mockImplementation(() => of(weatherMock));
+
+            const weatherEpicFactoryInstance = weatherEpicFactory(weatherService);
+            const action$ = of(actions.getWeatherAsync.request(123));
+
+            weatherEpicFactoryInstance(new ActionsObservable(action$), mockState, null).subscribe(
+                res => {
+                    expect(res).toMatchObject(actions.getWeatherAsync.success(weatherMock));
+
+                    done();
+                },
+            );
+        });
+
+        it('should handle error on fetching weather', done => {
+            jest.spyOn(weatherService, 'getWeather').mockImplementation(() =>
+                throwError(mockedError),
+            );
+
+            const weatherEpicFactoryInstance = weatherEpicFactory(weatherService);
+            const action$ = of(actions.getWeatherAsync.request(123));
+
+            weatherEpicFactoryInstance(new ActionsObservable(action$), mockState, null).subscribe(
+                res => {
+                    expect(res).toEqual(actions.getWeatherAsync.failure(mockedError));
 
                     done();
                 },

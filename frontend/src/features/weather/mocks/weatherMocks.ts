@@ -1,4 +1,9 @@
-import { DaytimeWeather, Weather } from 'features/weather/models/weatherModel';
+import {
+    DaytimeWeather,
+    Weather,
+    DaytimeWeatherData,
+    WeatherData,
+} from 'features/weather/models/weatherModel';
 
 export const daytimeWeatherMock: DaytimeWeather = {
     stateName: 'Heave Cloud',
@@ -10,7 +15,22 @@ export const daytimeWeatherMock: DaytimeWeather = {
     humidity: 59,
 };
 
+export const daytimeWeatherDataMock: DaytimeWeatherData = {
+    weather_state_name: 'Heave Cloud',
+    applicable_date: '2020-08-29',
+    the_temp: 22.222,
+    min_temp: 20.333,
+    max_temp: 24.33,
+    wind_speed: 5.797,
+    humidity: 59,
+};
+
 export const weatherMock: Weather = {
     daytimeWeathers: [daytimeWeatherMock],
     placeName: 'London',
+};
+
+export const weatherDataMock: WeatherData = {
+    consolidated_weather: [daytimeWeatherDataMock],
+    title: 'London',
 };
