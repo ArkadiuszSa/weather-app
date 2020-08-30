@@ -1,6 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { ResponsiveLine } from '@nivo/line';
+import { Line } from '@nivo/line';
+import AutoSizer from 'react-virtualized-auto-sizer';
 
 import { weatherChartConfig } from '../../configs/weatherChartConfig';
 import { getWeatherChartData } from '../../selectors/weatherSelectors';
@@ -11,7 +12,11 @@ export const WeatherLineChart = () => {
 
     return (
         <S.Wrapper>
-            <ResponsiveLine data={data} {...weatherChartConfig} />
+            <AutoSizer>
+                {({ height, width }) => (
+                    <Line data={data} height={height} width={width} {...weatherChartConfig} />
+                )}
+            </AutoSizer>
         </S.Wrapper>
     );
 };
