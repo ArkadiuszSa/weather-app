@@ -2,6 +2,7 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import arrowIcon from 'assets/icons/arrow.svg';
+import { Button } from 'common/styled/Button';
 
 import { setSelectedDateIndexAction } from '../../actions/weatherActions';
 import {
@@ -19,18 +20,18 @@ export const WeatherBottomButtons: React.FC = () => {
 
     return (
         <S.BottomButtonsWrapper>
-            <S.Button
+            <Button
                 disabled={!isPrevious}
                 onClick={() => dispatch(setSelectedDateIndexAction(daytimeIndex - 1))}
             >
                 {isPrevious && <S.BackIcon src={arrowIcon} />} Previous
-            </S.Button>
-            <S.Button
+            </Button>
+            <Button
                 disabled={!isNext}
                 onClick={() => dispatch(setSelectedDateIndexAction(daytimeIndex + 1))}
             >
                 Next {isNext && <S.NextIcon src={arrowIcon} />}
-            </S.Button>
+            </Button>
         </S.BottomButtonsWrapper>
     );
 };

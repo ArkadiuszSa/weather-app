@@ -1,5 +1,5 @@
 export class HttpErrorBase<T> extends Error {
-    constructor(message: string, public body: T, public code: number) {
+    constructor(message: string, public code: number, public body?: T) {
         super(message);
     }
 }

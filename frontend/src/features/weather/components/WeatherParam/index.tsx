@@ -1,11 +1,12 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
+import { color } from 'config/variablesConfig';
+
 import { DaytimeWeatherChartKey } from '../../models/weatherModel';
 import { setChartSourceKeyAction } from '../../actions/weatherActions';
+import { getChartDataSourceKey } from '../../selectors/weatherSelectors';
 import * as S from './styles';
-import { getChartDataSourceKey } from 'features/weather/selectors/weatherSelectors';
-import { color } from 'config/variablesConfig';
 
 interface Props {
     label: string;
