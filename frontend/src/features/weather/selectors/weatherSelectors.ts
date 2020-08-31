@@ -19,6 +19,8 @@ export const getChartDataSourceKey = (state: AppState) =>
     getWeatherStateSelector(state).chartDataSourceKey;
 export const getDaytimeWeathersSelector = (state: AppState) =>
     getWeatherSelector(state)?.daytimeWeathers;
+export const getNetworkErrorSelector = (state: AppState) =>
+    getWeatherStateSelector(state).networkError;
 
 export const getWeatherForSelectedDate = createSelector(
     getSelectedDateIndexSelector,

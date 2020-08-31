@@ -7,11 +7,18 @@ interface Props {
     subtitle?: string;
 }
 
-const defaultSubtitle = 'Something went wrong. You should contact with site administrator';
+const defaultSubtitle = 'Something went wrong. You should contact with the site administrator';
 
-export const ErrorInfo: React.FC<Props> = ({ title, subtitle = defaultSubtitle }) => (
-    <S.Wrapper>
-        <S.Title>{title}</S.Title>
-        <S.Subtitle>{subtitle}</S.Subtitle>
-    </S.Wrapper>
-);
+export const ErrorInfo: React.FC<Props> = ({ title, subtitle = defaultSubtitle }) => {
+    const refreshPage = () => {
+        window.location.reload();
+    };
+
+    return (
+        <S.Wrapper>
+            <S.Title>{title}</S.Title>
+            <S.Subtitle>{subtitle}</S.Subtitle>
+            <S.ReloadButton onClick={refreshPage}>Reload page</S.ReloadButton>
+        </S.Wrapper>
+    );
+};

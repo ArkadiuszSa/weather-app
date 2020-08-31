@@ -26,15 +26,11 @@ export class HttpService {
 
         return from(
             fetch(url, params).then(async response => {
-                if (response.ok) {
+                if (response.ok && (response.status === 200 || response.status === 204)) {
                     return response.status !== 204 ? response.json() : response;
                 }
 
-                const message = response.statusText;
-                const body = await response.json();
-                const code = response.status;
-
-                throw new HttpError(message, body, code);
+                throw new HttpError(response.statusText, response.status);
             }),
         );
     }

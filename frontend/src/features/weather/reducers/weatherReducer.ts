@@ -1,6 +1,7 @@
 import { createReducer } from 'typesafe-actions';
 
 import { AppAction } from 'common/models/actionModel';
+import { HttpError } from 'common/models/httpErrorModels';
 
 import * as actions from '../actions/weatherActions';
 import { Weather, DaytimeWeatherChartKey } from '../models/weatherModel';
@@ -13,6 +14,7 @@ export interface WeatherState {
     places: Place[];
     selectedWeatherDayIndex: number;
     chartDataSourceKey: DaytimeWeatherChartKey;
+    networkError?: HttpError;
 }
 
 export const defaultWeatherState: WeatherState = {
@@ -33,9 +35,10 @@ export const weatherReducer = createReducer<WeatherState, AppAction>(defaultWeat
         isFetchingPlaces: false,
         places: action.payload,
     }))
-    .handleAction(actions.searchPlacesByPhraseAsync.failure, state => ({
+    .handleAction(actions.searchPlacesByPhraseAsync.failure, (state, action) => ({
         ...state,
         isFetchingPlaces: false,
+        networkError: action.payload,
     }))
     .handleAction(actions.getWeatherAsync.request, state => ({
         ...state,
