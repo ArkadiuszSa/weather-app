@@ -84,6 +84,7 @@ export const LoaderWrapper = styled.div`
 `;
 export const NoResultsSpan = styled.span`
     display: block;
+    padding: 1rem 0;
     width: 100%;
     color: ${color.alternativeFont};
     text-align: center;

@@ -15,7 +15,6 @@ module.exports = {
         'arrow-body-style': ['warn', 'as-needed'],
         '@typescript-eslint/no-unused-vars': ['warn', { argsIgnorePattern: '^_' }],
         '@typescript-eslint/explicit-function-return-type': 'off',
-        '@typescript-eslint/no-use-before-define': 'off',
         '@typescript-eslint/explicit-module-boundary-types': 'off',
     },
     settings: {

@@ -5,6 +5,7 @@ import AutoSizer from 'react-virtualized-auto-sizer';
 
 import { weatherChartConfig } from '../../configs/weatherChartConfig';
 import { getWeatherChartData } from '../../selectors/weatherSelectors';
+import { LineChartTooltip } from '../LineChartTooltip';
 import * as S from './styles';
 
 export const WeatherLineChart = () => {
@@ -19,7 +20,13 @@ export const WeatherLineChart = () => {
              */}
             <AutoSizer>
                 {({ height, width }) => (
-                    <Line data={data} height={height} width={width} {...weatherChartConfig} />
+                    <Line
+                        data={data}
+                        height={height}
+                        width={width}
+                        tooltip={LineChartTooltip}
+                        {...weatherChartConfig}
+                    />
                 )}
             </AutoSizer>
         </S.Wrapper>
