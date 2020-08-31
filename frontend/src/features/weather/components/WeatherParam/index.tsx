@@ -10,8 +10,9 @@ import * as S from './styles';
 
 interface Props {
     label: string;
-    value: string | number;
+
     chartSourceKey: DaytimeWeatherChartKey;
+    value: string | number;
     valueFontSize?: string;
     subscript?: string;
 }

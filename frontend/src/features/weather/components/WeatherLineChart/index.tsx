@@ -12,6 +12,11 @@ export const WeatherLineChart = () => {
 
     return (
         <S.Wrapper>
+            {/*
+                Most of the charts libraries have problem with resizing
+                in flex container. AutoSizer provide fixed values to chart
+                which fix problem.
+             */}
             <AutoSizer>
                 {({ height, width }) => (
                     <Line data={data} height={height} width={width} {...weatherChartConfig} />

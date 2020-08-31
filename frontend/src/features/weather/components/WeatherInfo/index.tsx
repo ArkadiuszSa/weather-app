@@ -3,6 +3,8 @@ import { useSelector } from 'react-redux';
 import MoonLoader from 'react-spinners/MoonLoader';
 
 import { fontSize } from 'config/variablesConfig';
+import { FullCenter } from 'common/styled/Center';
+import sunIcon from 'assets/icons/sun.svg';
 
 import { WeatherLineChart } from '../../components/WeatherLineChart';
 import {
@@ -23,11 +25,11 @@ export const WeatherInfoComponent: React.FC = () => {
     return (
         <S.Wrapper>
             <S.ContentWrapper>
-                {!daytimeWeather || isFetchingWeather ? (
+                {isFetchingWeather ? (
                     <S.LoaderWrapper>
                         <MoonLoader size={50} />
                     </S.LoaderWrapper>
-                ) : (
+                ) : daytimeWeather ? (
                     <>
                         <S.PlaceHeader>{placeName}</S.PlaceHeader>
                         <S.WeatherDate>
@@ -70,6 +72,11 @@ export const WeatherInfoComponent: React.FC = () => {
                         </S.WeatherParamsWrapper>
                         <WeatherLineChart />
                     </>
+                ) : (
+                    <FullCenter>
+                        <S.NoSelectionIcon width={5} src={sunIcon} />
+                        <span>You must first search for the location you are interested in</span>
+                    </FullCenter>
                 )}
                 <WeatherBottomButtons />
             </S.ContentWrapper>
