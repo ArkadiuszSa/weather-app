@@ -19,7 +19,6 @@ export class HttpService {
         };
 
         const params = {
-            url,
             method,
             headers,
         };
