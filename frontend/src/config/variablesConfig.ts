@@ -5,6 +5,7 @@ export const color = {
     alternativeFont: '#FFFFFF',
     chartPoint: '#FF7575',
     inactive: '#E8E8E8',
+    tooltipBackground: '#FAFAFA',
 };
 
 export const fontSize = {
