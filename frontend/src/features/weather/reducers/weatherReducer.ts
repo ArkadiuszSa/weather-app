@@ -50,9 +50,10 @@ export const weatherReducer = createReducer<WeatherState, AppAction>(defaultWeat
         weather: action.payload,
     }))
 
-    .handleAction(actions.getWeatherAsync.failure, state => ({
+    .handleAction(actions.getWeatherAsync.failure, (state, action) => ({
         ...state,
         isFetchingWeather: false,
+        networkError: action.payload,
     }))
 
     .handleAction(actions.setSelectedDateIndexAction, (state, action) => ({
