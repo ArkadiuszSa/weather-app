@@ -19,15 +19,14 @@ export class HttpService {
         };
 
         const params = {
-            url,
             method,
             headers,
         };
 
         return from(
             fetch(url, params).then(async response => {
-                if (response.ok && (response.status === 200 || response.status === 204)) {
-                    return response.status !== 204 ? response.json() : response;
+                if (response.ok && response.status === 200) {
+                    return response.json();
                 }
 
                 throw new HttpError(response.statusText, response.status);

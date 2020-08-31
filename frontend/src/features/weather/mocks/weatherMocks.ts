@@ -1,8 +1,11 @@
+import { Serie } from '@nivo/line';
+
 import {
     DaytimeWeather,
     Weather,
     DaytimeWeatherData,
     WeatherData,
+    DaytimeWeatherChartKey,
 } from 'features/weather/models/weatherModel';
 
 export const daytimeWeatherMock: DaytimeWeather = {
@@ -36,3 +39,15 @@ export const weatherDataMock: WeatherData = {
     consolidated_weather: [daytimeWeatherDataMock],
     title: 'London',
 };
+
+export const avgTempChartSerieMock: Serie[] = [
+    {
+        id: DaytimeWeatherChartKey.AvgTemp,
+        data: [
+            {
+                x: daytimeWeatherMock.applicableDate.toDateString(),
+                y: Math.round(daytimeWeatherMock.avgTemp),
+            },
+        ],
+    },
+];
