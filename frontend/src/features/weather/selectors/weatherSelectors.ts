@@ -2,7 +2,7 @@ import { createSelector } from 'reselect';
 
 import { AppState } from 'common/models/appStateModel';
 
-import { transformToTimeSeriesChartData } from '../helpers/transformDataToChartData';
+import { transformToTimeSeriesChartData } from '../helpers/transformToTimeSeriesChartData';
 
 export const getWeatherStateSelector = (state: AppState) => state.weatherState;
 export const getWeatherSelector = (state: AppState) => getWeatherStateSelector(state).weather;
