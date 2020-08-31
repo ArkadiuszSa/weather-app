@@ -3,7 +3,7 @@ import React from 'react';
 import * as S from './styles';
 
 interface Props {
-    title: string;
+    title?: string;
     subtitle?: string;
 }
 

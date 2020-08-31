@@ -14,7 +14,7 @@ export const WeatherComponent: React.FC = () => {
     return (
         <>
             {networkError ? (
-                <ErrorInfo title={networkError.code.toString()} />
+                <ErrorInfo title={networkError?.code?.toString()} />
             ) : (
                 <S.LayoutWrapper>
                     <WeatherSearchComponent />

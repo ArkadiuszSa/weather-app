@@ -2,14 +2,9 @@ import styled from '@emotion/styled';
 
 import { color, fontSize, fontWeight } from 'config/variablesConfig';
 import { Button } from 'common/styled/Button';
+import { FullCenter } from 'common/styled/Center';
 
-export const Wrapper = styled.div`
-    height: 100vh;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+export const Wrapper = styled(FullCenter)`
     background: ${color.primary};
     color: ${color.alternativeFont};
 `;

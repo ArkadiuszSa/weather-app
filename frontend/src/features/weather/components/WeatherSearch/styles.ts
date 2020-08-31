@@ -7,6 +7,7 @@ import {
     breakpoints,
     searchPanelShadow,
 } from 'config/variablesConfig';
+import { Button } from 'common/styled/Button';
 
 export const Wrapper = styled.div`
     display: flex;
@@ -48,10 +49,10 @@ export const SearchInput = styled.input`
     &:focus {
         color: ${color.alternativeFont};
         border-bottom-color: ${color.alternativeFont};
+    }
 
-        &::placeholder {
-            color: ${color.alternativeFont};
-        }
+    &:focus&::placeholder {
+        color: ${color.alternativeFont};
     }
 `;
 
@@ -60,15 +61,12 @@ export const SearchIcon = styled.img`
     width: 1.5rem;
 `;
 
-export const SearchOptionButton = styled.button`
+export const SearchOptionButton = styled(Button)`
     display: block;
     width: 100%;
-    border: none;
-    padding: 1rem;
+    padding: 1rem 3rem;
     color: ${color.alternativeFont};
-    font-size: ${fontSize.normal};
     text-align: left;
-    background: transparent;
 `;
 
 export const SearchOptionsWrapper = styled.div`
@@ -82,4 +80,10 @@ export const SearchOptionsWrapper = styled.div`
 export const LoaderWrapper = styled.div`
     width: 1rem;
     margin-right: 1rem;
+`;
+export const NoResultsSpan = styled.span`
+    display: block;
+    width: 100%;
+    color: ${color.alternativeFont};
+    text-align: center;
 `;
