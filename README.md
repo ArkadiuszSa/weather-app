@@ -12,6 +12,7 @@ This is an application for checking the weather in a given location
 ## Development
 
 Weathers data are obtain using api: https://www.metaweather.com/​
+
 To deal with cors was used proxy: https://cors-anywhere.herokuapp.com
 
 Tech stack: react, redux, reselect, typescript, typesafe-actions redux-observable, jest and nivo charts.
@@ -29,13 +30,13 @@ After this you should create `.env` file in deployment folder. For development y
 To create development docker container you need to run:
 
 ```
-make build-dev
+docker-compose build
 ```
 
 To start development server inside docker you need to run:
 
 ```
-make dev
+docker-compose dev
 ```
 
 ### Frontend scripts
