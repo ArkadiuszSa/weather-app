@@ -17,6 +17,8 @@ To deal with cors was used proxy: https://cors-anywhere.herokuapp.com
 
 Tech stack: react, redux, reselect, typescript, typesafe-actions redux-observable, jest and nivo charts.
 
+Each commit is checked for linting, tests and project building with Gitlab: https://gitlab.com/ArkadiuszSa/weather-app/-/jobs
+
 You should first clone repo with command:
 
 ```
