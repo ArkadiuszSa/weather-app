@@ -1,3 +1,5 @@
+import { Serie } from '@nivo/line';
+
 import {
     DaytimeWeather,
     Weather,
@@ -5,7 +7,6 @@ import {
     WeatherData,
     DaytimeWeatherChartKey,
 } from 'features/weather/models/weatherModel';
-import { Serie } from '@nivo/line';
 
 export const daytimeWeatherMock: DaytimeWeather = {
     id: 1,

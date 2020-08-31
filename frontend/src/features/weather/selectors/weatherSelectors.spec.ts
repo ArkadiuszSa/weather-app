@@ -2,8 +2,8 @@ import {
     getIsPreviousDaytimeWeatherSelector,
     getIsNextDaytimeWeatherSelector,
     getWeatherForSelectedDate,
-} from 'features/weather/selectors/weatherSelectors';
-import { daytimeWeatherMock } from 'features/weather/mocks/weatherMocks';
+} from './weatherSelectors';
+import { daytimeWeatherMock } from '../mocks/weatherMocks';
 
 const secondDaytimeWeatherMock = { ...daytimeWeatherMock, id: 2 };
 const thirdDaytimeWeatherMock = { ...daytimeWeatherMock, id: 3 };
