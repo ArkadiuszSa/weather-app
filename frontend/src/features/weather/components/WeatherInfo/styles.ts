@@ -68,3 +68,8 @@ export const LoaderWrapper = styled.div`
     height: 100%;
     width: 100%;
 `;
+
+export const NoSelectionIcon = styled.img`
+    margin-bottom: 2rem;
+    width: 5rem;
+`;
