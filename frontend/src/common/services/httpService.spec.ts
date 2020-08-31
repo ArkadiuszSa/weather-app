@@ -2,9 +2,9 @@ import { of } from 'rxjs';
 import fetch from 'jest-fetch-mock';
 
 import { HttpService } from 'common/services/httpService';
+import { HttpMethod } from 'common/models/httpModels';
 import { placeDataMock } from 'features/weather/mocks/placeMocks';
 import { PlaceData } from 'features/weather/models/placeModel';
-import { HttpMethod } from 'common/models/httpModels';
 
 const mockedUrl = 'testUrl';
 const mockedBaseUrl = 'apiBase/';
@@ -25,8 +25,6 @@ describe('httpService', () => {
     });
     describe('GET method', () => {
         it('should transform daytimeWeather to chart series', done => {
-            fetch.mockResponseOnce(JSON.stringify({ rates: { CAD: 1.42 } }));
-
             const httpServiceSpy = jest
                 .spyOn(httpService, 'makeRequest')
                 .mockImplementation(() => of(placeDataMock));
@@ -43,7 +41,7 @@ describe('httpService', () => {
     });
 
     describe('makeRequest method', () => {
-        it('call fetch with certain parameters', done => {
+        it('should call fetch with certain parameters and successful receive data', done => {
             fetch.mockResponseOnce(JSON.stringify(placeDataMock));
 
             httpService
@@ -51,7 +49,20 @@ describe('httpService', () => {
 
                 .subscribe(result => {
                     expect(result).toMatchObject(placeDataMock);
-                    expect(fetch).toHaveBeenCalledTimes(1);
+                    expect(fetch).toBeCalledWith(`${mockedBaseUrl}${mockedUrl}`, mockedParams);
+                    done();
+                });
+        });
+
+        it('should call fetch with certain parameters and throw error', done => {
+            const mockedErrorResponse = { status: 500 };
+            fetch.mockResponseOnce(JSON.stringify(mockedErrorResponse));
+
+            httpService
+                .makeRequest<PlaceData>(mockedUrl, HttpMethod.GET)
+
+                .subscribe(result => {
+                    expect(result).toMatchObject(mockedErrorResponse);
                     expect(fetch).toBeCalledWith(`${mockedBaseUrl}${mockedUrl}`, mockedParams);
                     done();
                 });
