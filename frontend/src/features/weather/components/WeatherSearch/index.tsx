@@ -41,7 +41,7 @@ export const WeatherSearchComponent: React.FC = () => {
                     onChange={onSearchChange}
                     onFocus={() => setIsFocusOnSearch(true)}
                 />
-                <S.SearchIcon src={searchIcon} alt="Search icon" />
+                <S.SearchIcon width={1.5} src={searchIcon} alt="Search icon" />
             </S.SearchWrapper>
             {isFocusOnSearch && (
                 <S.SearchOptionsWrapper>

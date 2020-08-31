@@ -74,7 +74,7 @@ export const WeatherInfoComponent: React.FC = () => {
                     </>
                 ) : (
                     <FullCenter>
-                        <S.NoSelectionIcon src={sunIcon} />
+                        <S.NoSelectionIcon width={5} src={sunIcon} />
                         <span>You must first search for the location you are interested in</span>
                     </FullCenter>
                 )}

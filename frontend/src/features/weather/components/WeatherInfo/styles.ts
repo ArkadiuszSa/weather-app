@@ -1,6 +1,8 @@
 import styled from '@emotion/styled';
 
 import { fontSize, fontWeight, color, breakpoints } from 'config/variablesConfig';
+import { Icon } from 'common/styled/Icon';
+import { Center } from 'common/styled/Center';
 
 export const Wrapper = styled.div`
     height: calc(100vh - 6rem);
@@ -48,28 +50,25 @@ export const WeatherParamsWrapper = styled.div`
     }
 `;
 
-export const WeatherStateNameWrapper = styled.div`
+export const WeatherStateNameWrapper = styled(Center)`
     padding-left: 1rem;
     margin-top: 1.5rem;
+    margin-left: 1rem;
     border-left: 1px solid gray;
     text-transform: uppercase;
 `;
 
 export const GeneralWeatherInfoWrapper = styled.div`
-    display: grid;
     margin: 2rem 0;
-    grid-template-columns: 6rem 7rem;
+    display: flex;
+    align-items: stretch;
 `;
 
-export const LoaderWrapper = styled.div`
-    display: flex;
-    align-items: center;
-    justify-content: center;
+export const LoaderWrapper = styled(Center)`
     height: 100%;
     width: 100%;
 `;
 
-export const NoSelectionIcon = styled.img`
+export const NoSelectionIcon = styled(Icon)`
     margin-bottom: 2rem;
-    width: 5rem;
 `;

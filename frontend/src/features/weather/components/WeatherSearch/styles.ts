@@ -8,6 +8,7 @@ import {
     searchPanelShadow,
 } from 'config/variablesConfig';
 import { Button } from 'common/styled/Button';
+import { Icon } from 'common/styled/Icon';
 
 export const Wrapper = styled.div`
     display: flex;
@@ -56,7 +57,7 @@ export const SearchInput = styled.input`
     }
 `;
 
-export const SearchIcon = styled.img`
+export const SearchIcon = styled(Icon)`
     margin-left: 1rem;
     width: 1.5rem;
 `;
