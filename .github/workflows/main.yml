@@ -25,10 +25,13 @@ jobs:
         node-version: ${{ matrix.node-version }}
         
     - name: Install dependencies
+      working-directory: ./frontend
       run: yarn
       
     - name: Run the tests
+      working-directory: ./frontend
       run: yarn test
       
     - name: Run the lint
+      working-directory: ./frontend
       run: yarn lint
